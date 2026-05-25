@@ -31,11 +31,4 @@ The application accepts both `.csv` and `.xlsx` files. The data must be structur
 
 *Note: Completely blank rows are automatically skipped to prevent execution errors.*
 
-## Local Development Setup
 
-To run this application on your local machine for testing or development:
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/YourUsername/batch-image-downloader.git](https://github.com/YourUsername/batch-image-downloader.git)
-   cd batch-image-downloader
