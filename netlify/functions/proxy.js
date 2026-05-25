@@ -1,28 +1,29 @@
-export default async (req) => {
-    const url = new URL(req.url);
-    const targetUrl = url.searchParams.get("url");
+exports.handler = async (event) => {
+    const targetUrl = event.queryStringParameters && event.queryStringParameters.url;
 
-    if (!targetUrl) return new Response("No URL provided", { status: 400 });
+    if (!targetUrl) return { statusCode: 400, body: "No URL provided" };
 
     try {
         const response = await fetch(targetUrl, {
             headers: { 'User-Agent': 'Mozilla/5.0' }
         });
 
-        if (!response.ok) return new Response("Upstream error", { status: response.status });
+        if (!response.ok) return { statusCode: response.status, body: "Upstream error" };
 
         const arrayBuffer = await response.arrayBuffer();
         const contentType = response.headers.get('content-type') || 'image/jpeg';
 
-        return new Response(arrayBuffer, {
-            status: 200,
+        return {
+            statusCode: 200,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Cache-Control': 'public, max-age=2592000',
                 'Content-Type': contentType
-            }
-        });
+            },
+            body: Buffer.from(arrayBuffer).toString('base64'),
+            isBase64Encoded: true
+        };
     } catch (error) {
-        return new Response("Proxy Error", { status: 500 });
+        return { statusCode: 500, body: "Proxy Error" };
     }
 };
