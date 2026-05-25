@@ -132,7 +132,7 @@
                         
                         try {
                             // Back to the original stable proxy!
-                            const response = await fetch(`/api/proxy?url=${encodeURIComponent(url)}`);
+                           const response = await fetch(`/.netlify/functions/proxy?url=${encodeURIComponent(url)}`);
                             if (response.ok) {
                                 const blob = await response.blob();
                                 zip.file(`${skuId}.jpg`, blob); 
