@@ -31,4 +31,54 @@ The application accepts both `.csv` and `.xlsx` files. The data must be structur
 
 *Note: Completely blank rows are automatically skipped to prevent execution errors.*
 
+## Local Development Setup
+
+To run this application on your local machine for testing or development:
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/angith-anmesrisha/automate.git
+   ```
+
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Start the local server:**
+   ```bash
+   node server.js
+   ```
+
+4. **Access the app:** Open your browser and navigate to `http://localhost:3000`.
+
+## Deployment (Vercel)
+
+This application is heavily optimized for Vercel's Serverless environment.
+
+1. Ensure you have the Vercel CLI installed globally:
+   ```bash
+   npm install -g vercel
+   ```
+2. Log in to your Vercel account:
+   ```bash
+   vercel login
+   ```
+3. Deploy to production:
+   ```bash
+   vercel --prod
+   ```
+
+## Project Structure
+
+```text
+batch-image-downloader/
+├── public/
+│   └── index.html       # The frontend UI and client-side processing logic
+├── server.js            # Node.js Express server & Axios proxy
+├── package.json         # Node.js dependencies
+├── vercel.json          # Vercel serverless configuration
+└── .gitignore           # Git ignore rules
+```
+
 
